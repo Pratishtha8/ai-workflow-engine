@@ -1,0 +1,21 @@
+### Create a graph (Code Review)
+POST http://127.0.0.1:8000/graph/create
+Content-Type: application/json
+
+{ "threshold": 7 }
+
+### Start a run (replace GRAPH_ID with returned id)
+### Example body:
+POST http://127.0.0.1:8000/graph/run
+Content-Type: application/json
+
+{
+  "graph_id": "GRAPH_ID",
+  "code": "def hello():\n    print('hi')\n\ndef long_func():\n    print('a')\n    print('b')\n    print('c')"
+}
+
+### Get run state (replace RUN_ID)
+GET http://127.0.0.1:8000/graph/state/RUN_ID
+
+### WebSocket viewer (use a WebSocket client)
+ws://127.0.0.1:8000/ws/RUN_ID
